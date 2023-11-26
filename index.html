@@ -59,12 +59,29 @@
           toggleBox: function () {
             this.isVisible = !this.isVisible;
           },
-          greet(greeting) {
-            //if you remove this.greeting, then you can append from above
-            console.log(greeting);
-          },
+        },
+        updated() {
+          console.log("updated");
         },
       });
+      //we put box here in a new component
+      app.component("test-box", {
+        template: `
+        <div class = "box"> </div>
+        `,
+        created() {
+          console.log("created");
+        },
+        mounted() {
+          console.log("mounted");
+        },
+        //this does not print
+        unmounted() {
+          console.log("unmounted");
+        },
+      });
+      app.mount("#app");
+      /*
       app.component("login-form", {
         template: `
                <form @submit.prevent = "handleSubmit">
@@ -138,6 +155,7 @@
       });
 
       app.mount("#app");
+      */
     </script>
   </body>
 </html>
